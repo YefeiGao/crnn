@@ -23,7 +23,7 @@ curl -JLO https://github.com/google/googletest/archive/release-1.7.0.zip
 #   exit 1
 # fi
 unzip googletest-release-1.7.0.zip
-mv googletest-release-1.7.0 gtest-1.7.0
+cp -r googletest-release-1.7.0 gtest-1.7.0
 # Build in a separate directory
 mkdir -p build
 cd build
