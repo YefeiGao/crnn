@@ -23,6 +23,7 @@ curl -JLO https://github.com/google/googletest/archive/release-1.7.0.zip
 #   exit 1
 # fi
 unzip googletest-release-1.7.0.zip
+rm googletest-release-1.7.0.zip
 cp -r googletest-release-1.7.0 gtest-1.7.0
 # Build in a separate directory
 mkdir -p build
@@ -39,3 +40,8 @@ ctest
 
 # Install
 sudo make install
+
+cd ..
+rm -rf build
+rm -rf googletest-release-1.7.0
+rm -rf gtest-1.7.0

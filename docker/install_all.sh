@@ -81,7 +81,9 @@ sudo apt-get update && sudo apt-get install -y \
     libmatio-dev \
     libpython-dev \
     libpython3-dev \
-    python-numpy
+    python-numpy \
+    && sudo apt-get clean \
+    && sudo apt-get autoremove
 
 echo
 echo Update python package
@@ -114,6 +116,7 @@ autoreconf -ivf
 make
 sudo make install
 sudo ldconfig # reload the lib paths after freshly installed folly. fbthrift needs it.
+rm -rf $dir/folly/
 
 if [ $current -eq 1 ]; then
     echo
@@ -124,6 +127,7 @@ if [ $current -eq 1 ]; then
     cmake .
     make
     sudo make install
+    rm -rf $dir/wangle/
 fi
 
 echo
@@ -140,6 +144,7 @@ if [ $current -eq 1 ]; then
 fi
 make
 sudo make install
+rm -rf $dir/fbthrift/
 
 echo
 echo 'Installing TH++'
@@ -159,6 +164,7 @@ echo
 cd $dir/fblualib/fblualib
 ./build.sh
 
+rm -rf $dir/fblualib/
 echo
 echo 'All done!'
 echo
